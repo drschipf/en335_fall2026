@@ -1,0 +1,50 @@
+t = linspace(0,4*(1/50),100000);
+% Sampling interval and sampling frequency
+dt = t(2) - t(1);
+Fs = 1/dt;
+x1 = 28*sin(400*pi*t);
+x2 = 12*cos(500*pi*t); 
+x = x1 + x2;
+% Autocorrelation
+[C,lags] = xcorr(x,'coeff');
+
+% Convert lag from samples to seconds
+tau = lags/Fs;
+
+figure(1);
+subplot(1,2,1)
+plot(t,x)
+xlabel('time (s)')
+ylabel('x')
+subplot(1,2,2)
+plot(tau,C)
+xlim([0 0.08])
+xlabel('Time lab (s)')
+ylabel('Autocorrelation of x')
+% Mark the expected fundamental period
+xline(1/50,'--')
+
+%Non-periodic multi-function signal
+
+% y1 = 28*sin(400*pi*t);
+% y2 = 24*cos(sqrt(2)*500*pi*t); 
+% y = y1 + y2;
+% % Autocorrelation
+% [Cy,lagsy] = xcorr(y,'coeff');
+% 
+% % Convert lag from samples to seconds
+% tauy = lagsy/Fs;
+% 
+% figure(2);
+% subplot(1,2,1)
+% plot(t,y)
+% xlabel('time (s)')
+% ylabel('y')
+% subplot(1,2,2)
+% plot(tauy,Cy)
+% xlim([0 0.08])
+% xlabel('Time lab (s)')
+% ylabel('Autocorrelation of y')
+% % Mark the expected fundamental period
+% xline(1/50,'--')
+
