@@ -23,7 +23,7 @@ xlabel('Time lab (s)')
 ylabel('Autocorrelation of x')
 % Mark the expected fundamental period
 xline(1/50,'--')
-
+set(findall(gcf,'-property','FontSize'),'FontSize',24)
 %Non-periodic multi-function signal
 
 % y1 = 28*sin(400*pi*t);
