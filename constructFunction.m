@@ -30,6 +30,11 @@ switch func_name
         t_shift = 0.0;
         g = @(t) a*double(abs(t)<T/2);
         T_FS = T;
+    case 'periodic_square_pulse'
+        T0 = 2*T;
+        t_shift = 0.0;
+        g = @(t) a*double(abs(t)<N/2);
+        T_FS = T;
     otherwise
         error('no function defined\n')
 end
