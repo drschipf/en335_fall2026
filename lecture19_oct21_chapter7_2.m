@@ -102,7 +102,7 @@ plot(k_vec,abs(X_analytical),'ro','LineWidth',2);
 if plot_DTFT
 plot(k_fine,abs(X_dtft),'k-','LineWidth',2);
 end
-legend('FFT','DFT Definition','Analytical');
+legend('FFT','DFT Definition','Analytical','DTFT');
 xlabel('k (Frequency Index)');
 ylabel('|X[k]|');
 title('DFT Magnitude');
