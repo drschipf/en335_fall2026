@@ -1,0 +1,45 @@
+% Signals and Systems lecture on November 13, 2026
+omega = linspace(-2*pi, 2*pi, 1000);
+p1 = 1/2+1i*(1/2);
+p2 = 1/2-1i*(1/2);
+freq_response = @(z) 1./((z-p1).*(z-p2));
+
+exp_omega = exp(1i*omega);
+
+figure(1)
+plot(omega,abs(freq_response(exp_omega)),'k-')
+xlabel('\Omega')
+ylabel('|H(e^{i\Omega})|')
+set(findall(gcf,'-property','FontSize'),'FontSize',24)
+
+figure(2)
+
+
+% Define poles and zeros
+p1 = 0.5;
+p2 = 0.8;
+
+poles = [p1, p2];
+zeros_z = [];  % No finite zeros
+
+% Generate unit circle
+theta = linspace(0, 2*pi, 500);
+unit_circle = exp(1i*theta);
+
+% Plot
+figure(2)
+hold on
+axis equal
+grid on
+plot(real(unit_circle), imag(unit_circle), 'k--')
+plot(real(poles), imag(poles), 'rx', ...
+    'MarkerSize', 12, 'LineWidth', 2)
+plot(real(zeros_z), imag(zeros_z), 'bo', ...
+    'MarkerSize', 10, 'LineWidth', 2)
+xlabel('Real(z)')
+ylabel('Imag(z)')
+title('Z Plane')
+legend('Unit Circle', 'Poles', 'Zeros')
+xlim([-1.5, 1.5])
+ylim([-1.5, 1.5])
+
